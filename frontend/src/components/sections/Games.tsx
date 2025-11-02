@@ -345,65 +345,218 @@ const SudokuGame: React.FC = () => {
 const TicTacToe: React.FC = () => {
     const emptyBoard: (null | 'X' | 'O')[] = Array(9).fill(null);
     const [squares, setSquares] = useState<(null | 'X' | 'O')[]>(emptyBoard);
-    const [xIsNext, setXIsNext] = useState(true);
-    // Track turn order per player to enforce max 3 marks rule
-    const [xQueue, setXQueue] = useState<number[]>([]);
-    const [oQueue, setOQueue] = useState<number[]>([]);
     const [gameStarted, setGameStarted] = useState(false);
+    const [draggedPiece, setDraggedPiece] = useState<{type: 'X' | 'O', from: 'pool' | number} | null>(null);
+    
+    // Track pieces in pool (available pieces)
+    const [xPool, setXPool] = useState(3);
+    const [oPool, setOPool] = useState(3);
+    
+    // Track positions on board
+    const [xPositions, setXPositions] = useState<number[]>([]);
+    const [oPositions, setOPositions] = useState<number[]>([]);
 
     const winner = calculateWinner(squares);
     const isDraw = !winner && squares.every(Boolean);
 
-    const handleClick = (index: number) => {
-        if (!gameStarted || squares[index] || winner) return;
-        const nextSquares = squares.slice();
-        if (xIsNext) {
-            nextSquares[index] = 'X';
-            // enqueue and enforce max length 3
-            const newQueue = [...xQueue, index];
-            if (newQueue.length > 3) {
-                const oldest = newQueue.shift() as number;
-                nextSquares[oldest] = null;
-            }
-            setXQueue(newQueue);
-        } else {
-            nextSquares[index] = 'O';
-            const newQueue = [...oQueue, index];
-            if (newQueue.length > 3) {
-                const oldest = newQueue.shift() as number;
-                nextSquares[oldest] = null;
-            }
-            setOQueue(newQueue);
+    const handlePoolMouseDown = (type: 'X' | 'O') => {
+        if (!gameStarted || winner) return;
+        if (type === 'X' && xPool === 0) return;
+        if (type === 'O' && oPool === 0) return;
+        setDraggedPiece({type, from: 'pool'});
+    };
+
+    const handleBoardMouseDown = (index: number) => {
+        if (!gameStarted || !squares[index] || winner) return;
+        setDraggedPiece({type: squares[index] as 'X' | 'O', from: index});
+    };
+
+    const handleBoardMouseUp = (index: number) => {
+        if (!gameStarted || winner || !draggedPiece) return;
+        
+        // Cannot drop on occupied cell
+        if (squares[index] !== null) {
+            setDraggedPiece(null);
+            return;
         }
+        
+        const nextSquares = squares.slice();
+        const pieceType = draggedPiece.type;
+        
+        // Case 1: Moving from pool to board
+        if (draggedPiece.from === 'pool') {
+            nextSquares[index] = pieceType;
+            
+            if (pieceType === 'X') {
+                setXPool(prev => prev - 1);
+                const newPositions = [...xPositions, index];
+                setXPositions(newPositions);
+            } else {
+                setOPool(prev => prev - 1);
+                const newPositions = [...oPositions, index];
+                setOPositions(newPositions);
+            }
+        }
+        // Case 2: Moving from board to board
+        else {
+            const fromIndex = draggedPiece.from;
+            nextSquares[index] = pieceType;
+            nextSquares[fromIndex] = null;
+            
+            if (pieceType === 'X') {
+                const newPositions = xPositions.filter(p => p !== fromIndex);
+                setXPositions([...newPositions, index]);
+            } else {
+                const newPositions = oPositions.filter(p => p !== fromIndex);
+                setOPositions([...newPositions, index]);
+            }
+        }
+        
         setSquares(nextSquares);
-        setXIsNext(!xIsNext);
+        setDraggedPiece(null);
     };
 
     const resetGame = () => {
         setSquares(emptyBoard);
-        setXIsNext(true);
-        setXQueue([]);
-        setOQueue([]);
+        setXPool(3);
+        setOPool(3);
+        setXPositions([]);
+        setOPositions([]);
         setGameStarted(false);
+        setDraggedPiece(null);
     };
 
+    useEffect(() => {
+        const handleMouseUp = (e: MouseEvent) => {
+            if (!draggedPiece || !gameStarted || winner) {
+                if (draggedPiece) setDraggedPiece(null);
+                return;
+            }
+            
+            // Find the board cell that was dropped on
+            const target = e.target as HTMLElement;
+            const boardCell = target.closest('[data-board-cell]') as HTMLElement;
+            
+            if (boardCell) {
+                const index = parseInt(boardCell.dataset.boardIndex || '-1');
+                if (index >= 0 && index < 9 && squares[index] === null) {
+                    const nextSquares = squares.slice();
+                    const pieceType = draggedPiece.type;
+                    
+                    // Case 1: Moving from pool to board
+                    if (draggedPiece.from === 'pool') {
+                        nextSquares[index] = pieceType;
+                        
+                        if (pieceType === 'X') {
+                            setXPool(prev => prev - 1);
+                            setXPositions(prev => [...prev, index]);
+                        } else {
+                            setOPool(prev => prev - 1);
+                            setOPositions(prev => [...prev, index]);
+                        }
+                    }
+                    // Case 2: Moving from board to board
+                    else {
+                        const fromIndex = draggedPiece.from as number;
+                        nextSquares[index] = pieceType;
+                        nextSquares[fromIndex] = null;
+                        
+                        if (pieceType === 'X') {
+                            setXPositions(prev => {
+                                const filtered = prev.filter(p => p !== fromIndex);
+                                return [...filtered, index];
+                            });
+                        } else {
+                            setOPositions(prev => {
+                                const filtered = prev.filter(p => p !== fromIndex);
+                                return [...filtered, index];
+                            });
+                        }
+                    }
+                    
+                    setSquares(nextSquares);
+                    setDraggedPiece(null);
+                } else {
+                    setDraggedPiece(null);
+                }
+            } else {
+                setDraggedPiece(null);
+            }
+        };
+
+        if (draggedPiece) {
+            window.addEventListener('mouseup', handleMouseUp);
+            return () => window.removeEventListener('mouseup', handleMouseUp);
+        }
+    }, [draggedPiece, gameStarted, winner, squares]);
+
     return (
-        <div className="bg-slate-900/50 p-4 rounded-xl border border-cyan-500/20 relative">
-            <div className="text-center mb-4 text-cyan-200 font-semibold">
-                {winner ? `Winner: ${winner}` : isDraw ? 'Draw!' : `Turn: ${xIsNext ? 'X' : 'O'}`}
-            </div>
-            <div className="grid grid-cols-3 gap-2 w-full max-w-xs mx-auto my-9">
-                {squares.map((val, idx) => (
-                    <button
-                        key={idx}
-                        onClick={() => handleClick(idx)}
-                        className={`h-20 w-20 md:h-24 md:w-24 rounded-lg border-2 flex items-center justify-center text-3xl font-black transition-colors
-                            ${val === 'X' ? 'bg-cyan-600/20 border-cyan-400 text-cyan-300' : val === 'O' ? 'bg-purple-600/20 border-purple-400 text-purple-300' : 'bg-slate-800 border-slate-600 hover:bg-slate-700'}`}
+        <div className="bg-slate-900/50 p-4 rounded-xl border border-cyan-500/20 relative select-none">
+            {(winner || isDraw) && (
+                <div className="text-center mb-4 text-cyan-200 font-semibold">
+                    {winner ? `Winner: ${winner}` : 'Draw!'}
+                </div>
+            )}
+            
+            {/* X Pool - Top of board */}
+            <div className="flex justify-center gap-2 mb-4">
+                {Array(xPool).fill(null).map((_, idx) => (
+                    <div
+                        key={`x-pool-${idx}`}
+                        onMouseDown={(e) => {
+                            e.preventDefault();
+                            handlePoolMouseDown('X');
+                        }}
+                        className={`h-16 w-16 rounded-lg border-2 border-cyan-400 bg-cyan-600/20 text-cyan-300 flex items-center justify-center text-3xl font-black cursor-move select-none hover:bg-cyan-600/30 transition-all
+                            ${draggedPiece && draggedPiece.from === 'pool' && draggedPiece.type === 'X' ? 'opacity-50 scale-90' : ''}`}
                     >
-                        {val}
-                    </button>
+                        X
+                    </div>
                 ))}
             </div>
+
+            {/* Game Board 3x3 */}
+            <div className="grid grid-cols-3 gap-2 w-full max-w-xs mx-auto my-6 select-none">
+                {squares.map((val, idx) => (
+                    <div
+                        key={idx}
+                        data-board-cell
+                        data-board-index={idx}
+                        onMouseDown={(e) => {
+                            e.preventDefault();
+                            handleBoardMouseDown(idx);
+                        }}
+                        className={`h-20 w-20 md:h-24 md:w-24 rounded-lg border-2 flex items-center justify-center text-3xl font-black transition-all select-none
+                            ${val === 'X' 
+                                ? 'bg-cyan-600/20 border-cyan-400 text-cyan-300 hover:bg-cyan-600/30 cursor-move' 
+                                : val === 'O' 
+                                ? 'bg-purple-600/20 border-purple-400 text-purple-300 hover:bg-purple-600/30 cursor-move' 
+                                : 'bg-slate-800 border-slate-600 hover:bg-slate-700 cursor-pointer'}
+                            ${draggedPiece && draggedPiece.from !== 'pool' && draggedPiece.from === idx ? 'opacity-50 scale-90' : ''}
+                            ${draggedPiece && val === null ? 'border-dashed border-cyan-500' : ''}`}
+                    >
+                        {val}
+                    </div>
+                ))}
+            </div>
+            
+            {/* O Pool - Bottom of board */}
+            <div className="flex justify-center gap-2 mt-4">
+                {Array(oPool).fill(null).map((_, idx) => (
+                    <div
+                        key={`o-pool-${idx}`}
+                        onMouseDown={(e) => {
+                            e.preventDefault();
+                            handlePoolMouseDown('O');
+                        }}
+                        className={`h-16 w-16 rounded-lg border-2 border-purple-400 bg-purple-600/20 text-purple-300 flex items-center justify-center text-3xl font-black cursor-move select-none hover:bg-purple-600/30 transition-all
+                            ${draggedPiece && draggedPiece.from === 'pool' && draggedPiece.type === 'O' ? 'opacity-50 scale-90' : ''}`}
+                    >
+                        O
+                    </div>
+                ))}
+            </div>
+            
             <div className="text-center mt-6">
                 <button onClick={resetGame} className="bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-2 rounded-lg transition-colors">
                     New Game
