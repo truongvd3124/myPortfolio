@@ -103,12 +103,6 @@ The portfolio uses a cyan/blue color scheme defined in TailwindCSS. You can cust
 4. Enable GitHub Pages in repository settings
 5. Your site will be available at `https://username.github.io/repository-name`
 
-## 📞 Contact
-
-- **Portfolio**: [portfolio.truong-tech.me](https://portfolio.truong-tech.me/)
-- **LinkedIn**: [Truong Vo](https://www.linkedin.com/in/truong-vo-814922345/)
-- **Email**: vduytruong3124@gmail.com
-
 
 ## References UI Components
 
