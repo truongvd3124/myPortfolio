@@ -1,6 +1,6 @@
 # My Simple Portfolio 
 
-This is a web portfolio project built using TypeScript with React for the frontend and Django for the backend.
+This is a web portfolio project built using TypeScript with React for the frontend (and Django for the backend - soon implement after).
 
 ## Examples
 
