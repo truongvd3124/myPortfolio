@@ -1,5 +1,31 @@
 import React, { useState, useEffect } from 'react';
 
+// Import flag SVGs
+import flagAndorra from '../../assets/flags/Flag-Andorra--Streamline-Twemoji-Emoji.svg';
+import flagBulgaria from '../../assets/flags/Flag-Bulgaria--Streamline-Twemoji-Emoji.svg';
+import flagChad from '../../assets/flags/Flag-Chad--Streamline-Twemoji-Emoji.svg';
+import flagColombia from '../../assets/flags/Flag-Colombia--Streamline-Twemoji-Emoji.svg';
+import flagCzechia from '../../assets/flags/Flag-Czechia--Streamline-Twemoji-Emoji.svg';
+import flagFaroeIslands from '../../assets/flags/Flag-Faroe-Islands--Streamline-Twemoji-Emoji.svg';
+import flagFinland from '../../assets/flags/Flag-Finland--Streamline-Twemoji-Emoji.svg';
+import flagGuinea from '../../assets/flags/Flag-Guinea--Streamline-Twemoji-Emoji.svg';
+import flagHungary from '../../assets/flags/Flag-Hungary--Streamline-Twemoji-Emoji.svg';
+import flagIndonesia from '../../assets/flags/Flag-Indonesia--Streamline-Twemoji-Emoji.svg';
+import flagIraq from '../../assets/flags/Flag-Iraq--Streamline-Twemoji-Emoji.svg';
+import flagLuxembourg from '../../assets/flags/Flag-Luxembourg--Streamline-Twemoji-Emoji.svg';
+import flagMali from '../../assets/flags/Flag-Mali--Streamline-Twemoji-Emoji.svg';
+import flagMoldova from '../../assets/flags/Flag-Moldova--Streamline-Twemoji-Emoji.svg';
+import flagMonaco from '../../assets/flags/Flag-Monaco--Streamline-Twemoji-Emoji.svg';
+import flagNetherlands from '../../assets/flags/Flag-Netherlands--Streamline-Twemoji-Emoji.svg';
+import flagNorway from '../../assets/flags/Flag-Norway--Streamline-Twemoji-Emoji.svg';
+import flagPhilippines from '../../assets/flags/Flag-Philippines--Streamline-Twemoji-Emoji.svg';
+import flagPoland from '../../assets/flags/Flag-Poland--Streamline-Twemoji-Emoji.svg';
+import flagRomania from '../../assets/flags/Flag-Romania--Streamline-Twemoji-Emoji.svg';
+import flagSenegal from '../../assets/flags/Flag-Senegal--Streamline-Twemoji-Emoji.svg';
+import flagSweden from '../../assets/flags/Flag-Sweden--Streamline-Twemoji-Emoji.svg';
+import flagVenezuela from '../../assets/flags/Flag-Venezuela--Streamline-Twemoji-Emoji.svg';
+import flagYemen from '../../assets/flags/Flag-Yemen--Streamline-Twemoji-Emoji.svg';
+
 // Games Grid Component
 const GamesGrid: React.FC = () => {
     return (
@@ -7,7 +33,7 @@ const GamesGrid: React.FC = () => {
             {/* Memory Game */}
             <div className="flex flex-col">
                 <h3 className="text-2xl font-bold text-cyan-300 mb-6 text-center">
-                    Memory Game
+                    Memory
                 </h3>
                 <div className="flex-1">
                     <MemoryGame />
@@ -17,7 +43,7 @@ const GamesGrid: React.FC = () => {
             {/* 2048 Game */}
             <div className="flex flex-col">
                 <h3 className="text-2xl font-bold text-cyan-300 mb-6 text-center">
-                    2048 Game
+                    2048
                 </h3>
                 <div className="flex-1">
                     <Game2048 />
@@ -315,7 +341,7 @@ const SudokuGame: React.FC = () => {
                         onClick={initializeGame}
                         className="bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-2 rounded-lg transition-colors"
                     >
-                        New Game
+                        Exit
                     </button>
                 </div>
 
@@ -326,14 +352,14 @@ const SudokuGame: React.FC = () => {
                 )}
             </div>
 
-            {/* Start Game Overlay */}
+            {/* Play Overlay */}
             {!gameStarted && (
                 <div className="absolute inset-0 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center rounded-xl">
                     <button
                         onClick={startGame}
                         className="bg-cyan-600 hover:bg-cyan-700 text-white px-8 py-3 rounded-lg transition-colors text-lg font-bold"
                     >
-                        Start Game
+                        Play
                     </button>
                 </div>
             )}
@@ -491,15 +517,9 @@ const TicTacToe: React.FC = () => {
     }, [draggedPiece, gameStarted, winner, squares]);
 
     return (
-        <div className="bg-slate-900/50 p-4 rounded-xl border border-cyan-500/20 relative select-none">
-            {(winner || isDraw) && (
-                <div className="text-center mb-4 text-cyan-200 font-semibold">
-                    {winner ? `Winner: ${winner}` : 'Draw!'}
-                </div>
-            )}
-            
+        <div className="bg-slate-900/50 p-4 rounded-xl border border-cyan-500/20 relative select-none min-h-[400px]">
             {/* X Pool - Top of board */}
-            <div className="flex justify-center gap-2 mb-4">
+            <div className="flex justify-center gap-2 min-h-[56px]">
                 {Array(xPool).fill(null).map((_, idx) => (
                     <div
                         key={`x-pool-${idx}`}
@@ -507,7 +527,7 @@ const TicTacToe: React.FC = () => {
                             e.preventDefault();
                             handlePoolMouseDown('X');
                         }}
-                        className={`h-16 w-16 rounded-lg border-2 border-cyan-400 bg-cyan-600/20 text-cyan-300 flex items-center justify-center text-3xl font-black cursor-move select-none hover:bg-cyan-600/30 transition-all
+                        className={`h-14 w-14 rounded-lg border-2 border-cyan-400 bg-cyan-600/20 text-cyan-300 flex items-center justify-center text-2xl font-black cursor-move select-none hover:bg-cyan-600/30 transition-all
                             ${draggedPiece && draggedPiece.from === 'pool' && draggedPiece.type === 'X' ? 'opacity-50 scale-90' : ''}`}
                     >
                         X
@@ -516,7 +536,8 @@ const TicTacToe: React.FC = () => {
             </div>
 
             {/* Game Board 3x3 */}
-            <div className="grid grid-cols-3 gap-2 w-full max-w-xs mx-auto my-6 select-none">
+            <div className="flex justify-center">
+                <div className="grid grid-cols-3 gap-2 max-w-xs p-3 select-none">
                 {squares.map((val, idx) => (
                     <div
                         key={idx}
@@ -526,7 +547,7 @@ const TicTacToe: React.FC = () => {
                             e.preventDefault();
                             handleBoardMouseDown(idx);
                         }}
-                        className={`h-20 w-20 md:h-24 md:w-24 rounded-lg border-2 flex items-center justify-center text-3xl font-black transition-all select-none
+                        className={`h-14 w-14 md:h-16 md:w-16 min-h-[56px] md:min-h-[64px] rounded-lg border-2 flex items-center justify-center text-xl font-black transition-all select-none
                             ${val === 'X' 
                                 ? 'bg-cyan-600/20 border-cyan-400 text-cyan-300 hover:bg-cyan-600/30 cursor-move' 
                                 : val === 'O' 
@@ -538,10 +559,11 @@ const TicTacToe: React.FC = () => {
                         {val}
                     </div>
                 ))}
+                </div>
             </div>
             
             {/* O Pool - Bottom of board */}
-            <div className="flex justify-center gap-2 mt-4">
+            <div className="flex justify-center gap-2 min-h-[56px]">
                 {Array(oPool).fill(null).map((_, idx) => (
                     <div
                         key={`o-pool-${idx}`}
@@ -549,7 +571,7 @@ const TicTacToe: React.FC = () => {
                             e.preventDefault();
                             handlePoolMouseDown('O');
                         }}
-                        className={`h-16 w-16 rounded-lg border-2 border-purple-400 bg-purple-600/20 text-purple-300 flex items-center justify-center text-3xl font-black cursor-move select-none hover:bg-purple-600/30 transition-all
+                        className={`h-14 w-14 rounded-lg border-2 border-purple-400 bg-purple-600/20 text-purple-300 flex items-center justify-center text-2xl font-black cursor-move select-none hover:bg-purple-600/30 transition-all
                             ${draggedPiece && draggedPiece.from === 'pool' && draggedPiece.type === 'O' ? 'opacity-50 scale-90' : ''}`}
                     >
                         O
@@ -557,14 +579,14 @@ const TicTacToe: React.FC = () => {
                 ))}
             </div>
             
-            <div className="text-center mt-6">
+            <div className="text-center mt-3">
                 <button onClick={resetGame} className="bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-2 rounded-lg transition-colors">
-                    New Game
+                    Exit
                 </button>
             </div>
 
             {/* Start / Result Overlay */}
-            {!gameStarted && (
+            {(!gameStarted || winner || isDraw) && (
                 <div className="absolute inset-0 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center rounded-xl">
                     <div className="text-center space-y-4">
                         {(winner || isDraw) && (
@@ -573,10 +595,16 @@ const TicTacToe: React.FC = () => {
                             </div>
                         )}
                         <button
-                            onClick={() => setGameStarted(true)}
+                            onClick={() => {
+                                if (winner || isDraw) {
+                                    resetGame();
+                                } else {
+                                    setGameStarted(true);
+                                }
+                            }}
                             className="bg-cyan-600 hover:bg-cyan-700 text-white px-8 py-3 rounded-lg transition-colors text-lg font-bold"
                         >
-                            {winner || isDraw ? 'Play Again' : 'Start Game'}
+                            {winner || isDraw ? 'Play Again' : 'Play'}
                         </button>
                     </div>
                 </div>
@@ -612,7 +640,33 @@ const MemoryGame: React.FC = () => {
     const [gameStarted, setGameStarted] = useState(false);
     const [bestTime, setBestTime] = useState<number>(0);
 
-    const symbols = ['🍎', '🍊', '🍌', '🍇', '🍓', '🍑', '🥝', '🍍', '🥭', '🍒', '🍋', '🍉', '🍅', '🥕', '🌽', '🥔', '🍄', '🥜', '🍯', '🧀', '🥚', '🍞', '🥖', '🥨', '🧈', '🥞', '🧇', '🍳', '🥓', '🍖', '🍗', '🥩'];
+    // Flag SVG imports array
+    const symbols = [
+        flagAndorra,
+        flagBulgaria,
+        flagChad,
+        flagColombia,
+        flagCzechia,
+        flagFaroeIslands,
+        flagFinland,
+        flagGuinea,
+        flagHungary,
+        flagIndonesia,
+        flagIraq,
+        flagLuxembourg,
+        flagMali,
+        flagMoldova,
+        flagMonaco,
+        flagNetherlands,
+        flagNorway,
+        flagPhilippines,
+        flagPoland,
+        flagRomania,
+        flagSenegal,
+        flagSweden,
+        flagVenezuela,
+        flagYemen,
+    ];
 
     const isGameComplete = matched.length === cards.length;
 
@@ -689,18 +743,22 @@ const MemoryGame: React.FC = () => {
                     <div>Best: {bestTime > 0 ? formatTime(bestTime) : '--:--'}</div>
                 </div>
 
-                <div className="grid grid-cols-8 gap-1 mb-6 justify-center w-full max-w-md mx-auto">
+                <div className="grid grid-cols-8 gap-1 my-3 justify-center w-full max-w-md mx-auto">
                     {cards.map((card, index) => (
                         <button
                             key={index}
-                            className={`w-10 h-12 text-sm rounded-md transition-all duration-300 flex items-center justify-center ${
+                            className={`w-10 h-10 rounded-md transition-all duration-300 flex items-center justify-center ${
                                 flipped.includes(index) || matched.includes(index)
                                     ? 'bg-cyan-600 text-white'
                                     : 'bg-slate-700 hover:bg-slate-600 text-slate-300'
                             }`}
                             onClick={() => handleCardClick(index)}
                         >
-                            {flipped.includes(index) || matched.includes(index) ? card : '?'}
+                            {flipped.includes(index) || matched.includes(index) ? (
+                                <img src={card as string} alt="flag" className="w-8 h-8 object-contain" />
+                            ) : (
+                                '?'
+                            )}
                         </button>
                     ))}
                 </div>
@@ -716,19 +774,19 @@ const MemoryGame: React.FC = () => {
                         onClick={initializeGame}
                         className="bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-2 rounded-lg transition-colors"
                     >
-                        New Game
+                        Exit
                     </button>
                 </div>
             </div>
 
-            {/* Start Game Overlay */}
+            {/* Play Overlay */}
             {!gameStarted && (
                 <div className="absolute inset-0 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center rounded-xl">
                     <button
                         onClick={startGame}
                         className="bg-cyan-600 hover:bg-cyan-700 text-white px-8 py-3 rounded-lg transition-colors text-lg font-bold"
                     >
-                        Start Game
+                        Play
                     </button>
                 </div>
             )}
@@ -950,7 +1008,7 @@ const Game2048: React.FC = () => {
                     <div>Best: {bestScore}</div>
                 </div>
 
-                <div className="bg-slate-800 p-4 rounded-xl border-2 border-cyan-500/30 mt-6 inline-block">
+                <div className="bg-slate-800 p-4 rounded-xl border-2 border-cyan-500/30 mt-1 mb-3 inline-block">
                     <div className="grid grid-cols-4 gap-1">
                         {board.map((row, rowIndex) =>
                             row.map((cell, colIndex) => (
@@ -976,12 +1034,12 @@ const Game2048: React.FC = () => {
                 {/* Game over message moved to overlay */}
 
 
-                <div className="mt-10">
+                <div>
                     <button
                         onClick={initializeGame}
                         className="bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-2 rounded-lg transition-colors"
                     >
-                        New Game
+                        Exit
                     </button>
                 </div>
             </div>
@@ -1001,7 +1059,7 @@ const Game2048: React.FC = () => {
                                     onClick={startGame}
                                     className="bg-cyan-600 hover:bg-cyan-700 text-white px-8 py-3 rounded-lg transition-colors text-lg font-bold"
                                 >
-                                    Start Game
+                                    Play
                                 </button>
                             )}
                             {gameOver && (
@@ -1009,7 +1067,7 @@ const Game2048: React.FC = () => {
                                     onClick={initializeGame}
                                     className="bg-cyan-600 hover:bg-cyan-700 text-white px-8 py-3 rounded-lg transition-colors text-lg font-bold"
                                 >
-                                    New Game
+                                    Exit
                                 </button>
                             )}
                         </div>
