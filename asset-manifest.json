@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.b4611019.css",
-    "main.js": "/static/js/main.3f663353.js",
+    "main.css": "/static/css/main.3fd20e46.css",
+    "main.js": "/static/js/main.1b926b0d.js",
     "static/media/autunm.jpg": "/static/media/autunm.a3bb9778f41428be9c13.jpg",
     "static/media/winter.jpg": "/static/media/winter.bf87d35acc968c1d64a2.jpg",
     "static/media/summer.jpg": "/static/media/summer.90ac90c5dffca75c9ca0.jpg",
@@ -34,11 +34,11 @@
     "static/media/Flag-Indonesia--Streamline-Twemoji-Emoji.svg": "/static/media/Flag-Indonesia--Streamline-Twemoji-Emoji.288799ac87eb4fd93e71736fc56c1ead.svg",
     "static/media/Flag-Monaco--Streamline-Twemoji-Emoji.svg": "/static/media/Flag-Monaco--Streamline-Twemoji-Emoji.10f8171eb957626047eaeabe72bd1f28.svg",
     "static/media/Flag-Poland--Streamline-Twemoji-Emoji.svg": "/static/media/Flag-Poland--Streamline-Twemoji-Emoji.dc4c046539a06bd593ec3d0607a0a761.svg",
-    "main.b4611019.css.map": "/static/css/main.b4611019.css.map",
-    "main.3f663353.js.map": "/static/js/main.3f663353.js.map"
+    "main.3fd20e46.css.map": "/static/css/main.3fd20e46.css.map",
+    "main.1b926b0d.js.map": "/static/js/main.1b926b0d.js.map"
   },
   "entrypoints": [
-    "static/css/main.b4611019.css",
-    "static/js/main.3f663353.js"
+    "static/css/main.3fd20e46.css",
+    "static/js/main.1b926b0d.js"
   ]
 }
