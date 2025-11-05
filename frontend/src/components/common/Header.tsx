@@ -21,6 +21,26 @@ const Header: React.FC = () => {
         setIsMobileMenuOpen(false);
     };
 
+    const scrollToSection = (sectionId: string) => {
+        const targetSection = document.getElementById(sectionId);
+        if (targetSection) {
+            targetSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+        // Close mobile menu if open
+        if (isMobileMenuOpen) {
+            closeMobileMenu();
+        }
+    };
+
+    const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        e.preventDefault();
+        const sectionId = href.replace('#', '');
+        scrollToSection(sectionId);
+    };
+
     return (
         <header className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
             isScrolled ? 'bg-slate-950/95 backdrop-blur-md' : 'bg-transparent'
@@ -30,6 +50,7 @@ const Header: React.FC = () => {
                     {/* Brand */}
                     <a 
                         href="#hero" 
+                        onClick={(e) => handleNavClick(e, '#hero')}
                         className="text-2xl font-black text-slate-200 hover:text-cyan-600 transition-colors duration-300"
                     >
                         Duy Truong aka dTruong
@@ -48,6 +69,7 @@ const Header: React.FC = () => {
                                 <li key={index}>
                                     <a 
                                         href={item.href}
+                                        onClick={(e) => handleNavClick(e, item.href)}
                                         className="text-slate-200 font-bold px-4 py-2 rounded-lg hover:text-cyan-400 hover:bg-slate-800 transition-all duration-300"
                                     >
                                         {item.label}
@@ -82,7 +104,7 @@ const Header: React.FC = () => {
                                 <li key={index}>
                                     <a 
                                         href={item.href}
-                                        onClick={closeMobileMenu}
+                                        onClick={(e) => handleNavClick(e, item.href)}
                                         className="block text-slate-200 font-bold px-6 py-3 hover:text-cyan-400 hover:bg-slate-800 transition-all duration-300"
                                     >
                                         {item.label}

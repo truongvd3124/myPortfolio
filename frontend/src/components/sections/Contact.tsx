@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import ExternalLinkIcon from "../ui/ExternalLinkIcon";
 
 const Contact: React.FC = () => {
     const navLinks = [
@@ -113,10 +114,12 @@ const Contact: React.FC = () => {
                 <div className="text-center mb-6">
                     <a 
                         href="mailto:vduytruong3124@gmail.com" 
-                        className="inline-block bg-gradient-to-br from-cyan-900/20 via-blue-900/30 to-purple-900/20 text-cyan-300 border border-cyan-500/30 backdrop-blur-sm px-8 py-3 rounded-lg font-semibold hover:from-cyan-500/20 hover:via-blue-500/30 hover:to-purple-500/20 hover:text-cyan-100 hover:border-cyan-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/25 relative overflow-hidden"
+                        className="group/contact-btn relative inline-flex items-center justify-center bg-slate-800/50 text-cyan-300 border border-cyan-500/30 px-8 py-3 rounded-lg font-semibold hover:text-slate-100 hover:border-cyan-400/50 transition-all duration-500 hover:shadow-md hover:shadow-cyan-500/20 overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-cyan-500 before:to-blue-500 before:-translate-x-full before:transition-transform before:duration-500 hover:before:translate-x-0"
                     >
-                        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-transparent to-purple-500/10 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-                        <span className="relative z-10">Get In Touch</span>
+                        <span className="relative z-10 transition-opacity duration-300 group-hover/contact-btn:opacity-0">Get In Touch</span>
+                        <ExternalLinkIcon 
+                            className="absolute w-6 h-6 text-white transition-opacity duration-300 opacity-0 group-hover/contact-btn:opacity-100 z-20"
+                        />
                     </a>
                 </div>
 
