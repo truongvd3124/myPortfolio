@@ -15,7 +15,7 @@ const MyWorlds: React.FC = () => {
             title: "Exploring Geography & Nature",
             date: "2018 - current",
             category: "Travel & Nature",
-            content: "I simply find it interesting to discuss geography. Although I still make mistakes, I can recognize 197/197 flags of countries and territories around the world."
+            content: "I simply find it interesting to discuss geography. Although I still make mistakes, I can recognize 197/197 flags of countries and territories around the world. Check out these flag games: <a href='https://flagle-game.com/unlimited' target='_blank' rel='noopener noreferrer' class='text-cyan-400 hover:text-cyan-300 underline'>Flagle</a> and <a href='https://www.sporcle.com/games/g/worldflags' target='_blank' rel='noopener noreferrer' class='text-cyan-400 hover:text-cyan-300 underline'>Sporcle World Flags</a>."
         },
         {
             id: 2,
@@ -82,9 +82,10 @@ const MyWorlds: React.FC = () => {
                                 <h3 className="text-slate-100 font-semibold">
                                     {story.title}
                                 </h3>
-                                <p className="text-slate-400 text-sm mt-1">
-                                    {story.content}
-                                </p>
+                                <p 
+                                    className="text-slate-400 text-sm mt-1"
+                                    dangerouslySetInnerHTML={{ __html: story.content.replace(/\n/g, '<br />') }}
+                                />
                             </li>
                         ))}
                     </ol>

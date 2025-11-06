@@ -4,11 +4,22 @@ import ExternalLinkIcon from "../ui/ExternalLinkIcon";
 
 const Contact: React.FC = () => {
     const navLinks = [
+        { name: "Hero", href: "#hero" },
         { name: "About", href: "#about" },
         { name: "Projects", href: "#projects" },
         { name: "My Worlds", href: "#my-worlds" },
-        { name: "Contact", href: "#contact" },
     ];
+
+    const scrollToSection = (href: string) => {
+        const sectionId = href.replace('#', '');
+        const section = document.getElementById(sectionId);
+        if (section) {
+            section.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    };
 
     const socialIcons = [
         {
@@ -87,7 +98,11 @@ const Contact: React.FC = () => {
                             <li key={link.name}>
                                 <a
                                     href={link.href}
-                                    className="text-slate-300 hover:text-cyan-400 transition-all duration-300 relative after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-0 after:bg-cyan-400 after:transition-all after:duration-300 hover:after:w-full"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        scrollToSection(link.href);
+                                    }}
+                                    className="text-slate-300 hover:text-cyan-400 transition-all duration-300 relative after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-0 after:bg-cyan-400 after:transition-all after:duration-300 hover:after:w-full cursor-pointer"
                                 >
                                     {link.name}
                                 </a>

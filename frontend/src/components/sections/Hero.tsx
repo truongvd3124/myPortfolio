@@ -13,7 +13,7 @@ const Hero: React.FC = () => {
     };
 
     return (
-        <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white text-center relative overflow-hidden">
+        <section id="hero" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white text-center relative overflow-hidden">
             {/* Background Pattern with Gradient - cyan/blue theme */}
             <div className="absolute inset-0 opacity-60 z-0">
                 <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-blue-500/15 to-purple-500/10"></div>
