@@ -34,7 +34,8 @@ module.exports = {
         textLight: '#7d7d7d',
       },
       fontFamily: {
-        'inter': ['Inter', 'sans-serif'],
+        'space-grotesk': ['Space Grotesk', 'sans-serif'],
+        'sans': ['Space Grotesk', 'sans-serif'],
       },
       animation: {
         'bounce-slow': 'bounce 2s infinite',

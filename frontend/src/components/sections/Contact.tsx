@@ -79,7 +79,7 @@ const Contact: React.FC = () => {
     ];
 
     return (
-        <footer id="contact" className="py-20 px-4 sm:px-6 lg:px-8 font-inter relative overflow-hidden bg-slate-950">
+        <footer id="contact" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-slate-950">
             <div className="max-w-7xl mx-auto flex flex-col items-center relative z-10">
                 <div className="mb-6 flex items-center justify-center">
                     <img 

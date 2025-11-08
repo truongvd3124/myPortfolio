@@ -33,7 +33,7 @@ const Hero: React.FC = () => {
                     </span>
                 </h1>
                 <p className="text-xl md:text-2xl mb-4 opacity-90 animate-slide-up">
-                        I'm an Undergraduate Student Developer
+                        I'm an Final-year Student in CET major
                 </p>
                 
                 {/* Social Contact Icons */}

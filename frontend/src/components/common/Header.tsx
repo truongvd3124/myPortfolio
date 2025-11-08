@@ -53,7 +53,7 @@ const Header: React.FC = () => {
                         onClick={(e) => handleNavClick(e, '#hero')}
                         className="text-2xl font-black text-slate-200 hover:text-cyan-600 transition-colors duration-300"
                     >
-                        Duy Truong aka dTruong
+                        dTruong
                     </a>
                     
                     {/* Desktop Navigation */}

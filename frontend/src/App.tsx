@@ -11,7 +11,7 @@ import Contact from './components/sections/Contact';
 const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <div className="app font-inter">
+      <div className="app font-space-grotesk">
         <Header />
         <main>
           <div id="hero">
