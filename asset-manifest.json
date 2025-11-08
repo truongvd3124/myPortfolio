@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.1171baee.css",
-    "main.js": "/static/js/main.4ae9a553.js",
+    "main.css": "/static/css/main.a1214483.css",
+    "main.js": "/static/js/main.afaa0a0e.js",
     "static/media/autunm.jpg": "/static/media/autunm.a3bb9778f41428be9c13.jpg",
     "static/media/winter.jpg": "/static/media/winter.bf87d35acc968c1d64a2.jpg",
     "static/media/summer.jpg": "/static/media/summer.90ac90c5dffca75c9ca0.jpg",
@@ -20,6 +20,7 @@
     "static/media/Flag-Finland--Streamline-Twemoji-Emoji.svg": "/static/media/Flag-Finland--Streamline-Twemoji-Emoji.40c7ecfe1d511bda20b822c9fd917da6.svg",
     "static/media/Flag-Sweden--Streamline-Twemoji-Emoji.svg": "/static/media/Flag-Sweden--Streamline-Twemoji-Emoji.36f638e44663c419123b3b3a5e352830.svg",
     "static/media/Flag-Czechia--Streamline-Twemoji-Emoji.svg": "/static/media/Flag-Czechia--Streamline-Twemoji-Emoji.a7d2c1a505f3baa7c34d9a4ba38160fc.svg",
+    "index.html": "/index.html",
     "static/media/Flag-Romania--Streamline-Twemoji-Emoji.svg": "/static/media/Flag-Romania--Streamline-Twemoji-Emoji.f6c087cc1792d972b414725f9856e1df.svg",
     "static/media/Flag-Guinea--Streamline-Twemoji-Emoji.svg": "/static/media/Flag-Guinea--Streamline-Twemoji-Emoji.bb9ad2352dc453e3da5a3eb52f0b181a.svg",
     "static/media/Flag-Chad--Streamline-Twemoji-Emoji.svg": "/static/media/Flag-Chad--Streamline-Twemoji-Emoji.99ef443445d754094b77b21ace890c6a.svg",
@@ -30,15 +31,14 @@
     "static/media/Flag-Yemen--Streamline-Twemoji-Emoji.svg": "/static/media/Flag-Yemen--Streamline-Twemoji-Emoji.e352d24fab65922bc36e1c0489a26538.svg",
     "static/media/Flag-Bulgaria--Streamline-Twemoji-Emoji.svg": "/static/media/Flag-Bulgaria--Streamline-Twemoji-Emoji.988398bbd49a5453365b731abb87c657.svg",
     "static/media/Flag-Colombia--Streamline-Twemoji-Emoji.svg": "/static/media/Flag-Colombia--Streamline-Twemoji-Emoji.a66400d4d40268d4241db5c3cff2a789.svg",
-    "index.html": "/index.html",
     "static/media/Flag-Indonesia--Streamline-Twemoji-Emoji.svg": "/static/media/Flag-Indonesia--Streamline-Twemoji-Emoji.288799ac87eb4fd93e71736fc56c1ead.svg",
     "static/media/Flag-Monaco--Streamline-Twemoji-Emoji.svg": "/static/media/Flag-Monaco--Streamline-Twemoji-Emoji.10f8171eb957626047eaeabe72bd1f28.svg",
     "static/media/Flag-Poland--Streamline-Twemoji-Emoji.svg": "/static/media/Flag-Poland--Streamline-Twemoji-Emoji.dc4c046539a06bd593ec3d0607a0a761.svg",
-    "main.1171baee.css.map": "/static/css/main.1171baee.css.map",
-    "main.4ae9a553.js.map": "/static/js/main.4ae9a553.js.map"
+    "main.a1214483.css.map": "/static/css/main.a1214483.css.map",
+    "main.afaa0a0e.js.map": "/static/js/main.afaa0a0e.js.map"
   },
   "entrypoints": [
-    "static/css/main.1171baee.css",
-    "static/js/main.4ae9a553.js"
+    "static/css/main.a1214483.css",
+    "static/js/main.afaa0a0e.js"
   ]
 }
