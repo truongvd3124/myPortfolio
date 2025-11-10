@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import ExternalLinkIcon from "../ui/ExternalLinkIcon";
+import LoveReact from "../ui/LoveReact";
 
 const Contact: React.FC = () => {
     const navLinks = [
@@ -136,6 +137,30 @@ const Contact: React.FC = () => {
                             className="absolute w-6 h-6 text-white transition-opacity duration-300 opacity-0 group-hover/contact-btn:opacity-100 z-20"
                         />
                     </a>
+                </div>
+
+                {/* Love React Buttons */}
+                <div className="flex flex-col items-center gap-3 mb-6">
+                    <p className="text-sm text-slate-400">Show some love</p>
+                    <div className="flex flex-wrap justify-center items-center gap-4">
+                        {[
+                            { color: "rgb(34, 211, 238)", label: "Cyan" },      // Cyan
+                            { color: "rgb(168, 85, 247)", label: "Purple" },   // Purple
+                            { color: "rgb(236, 72, 153)", label: "Pink" },    // Pink
+                            { color: "rgb(239, 68, 68)", label: "Red" },      // Red
+                            { color: "rgb(34, 197, 94)", label: "Green" }      // Green
+                        ].map((heart, index) => (
+                            <div key={index} className="flex flex-col items-center gap-1">
+                                <LoveReact 
+                                    color={heart.color}
+                                    size={45}
+                                    onToggle={(isLiked) => {
+                                        console.log(`${heart.label} ${isLiked ? "Liked!" : "Unliked!"}`);
+                                    }}
+                                />
+                            </div>
+                        ))}
+                    </div>
                 </div>
 
                 <p className="text-center text-xs text-slate-400 mt-4">
