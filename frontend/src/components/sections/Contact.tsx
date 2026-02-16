@@ -2,6 +2,7 @@
 import React from "react";
 import ExternalLinkIcon from "../ui/ExternalLinkIcon";
 import LoveReact from "../ui/LoveReact";
+import { SOCIAL_LINKS, CONTACT_LINKS } from "../../utils/constants";
 
 const Contact: React.FC = () => {
     const navLinks = [
@@ -25,7 +26,7 @@ const Contact: React.FC = () => {
     const socialIcons = [
         {
             name: "GitHub",
-            href: "https://github.com/dtruowfng3",
+            href: SOCIAL_LINKS.GITHUB,
             svg: (
                 <svg
                     className="size-6 transition-transform duration-200 hover:scale-110"
@@ -43,7 +44,7 @@ const Contact: React.FC = () => {
         },
         {
             name: "LinkedIn",
-            href: "https://www.linkedin.com/in/truong-vo-814922345/",
+            href: SOCIAL_LINKS.LINKEDIN,
             svg: (
                 <svg
                     className="size-6 transition-transform duration-200 hover:scale-110"
@@ -61,7 +62,7 @@ const Contact: React.FC = () => {
         },
         {
             name: "Facebook",
-            href: "https://www.facebook.com/d.truowfng.3/",
+            href: SOCIAL_LINKS.FACEBOOK,
             svg: (
                 <svg
                     className="size-6 transition-transform duration-200 hover:scale-110"
@@ -83,9 +84,9 @@ const Contact: React.FC = () => {
         <footer id="contact" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-slate-950">
             <div className="max-w-7xl mx-auto flex flex-col items-center relative z-10">
                 <div className="mb-6 flex items-center justify-center">
-                    <img 
-                        src="/android-chrome-192x192.png" 
-                        alt="Duy Truong Logo" 
+                    <img
+                        src="/android-chrome-192x192.png"
+                        alt="Duy Truong Logo"
                         className="w-12 h-12 mr-3"
                     />
                     <span className="text-white text-3xl font-extrabold tracking-wide">
@@ -128,12 +129,12 @@ const Contact: React.FC = () => {
                 </div>
 
                 <div className="text-center mb-6">
-                    <a 
-                        href="mailto:vduytruong3124@gmail.com" 
+                    <a
+                        href={CONTACT_LINKS.EMAIL}
                         className="group/contact-btn relative inline-flex items-center justify-center bg-slate-800/50 text-cyan-300 border border-cyan-500/30 px-8 py-3 rounded-lg font-semibold hover:text-slate-100 hover:border-cyan-400/50 transition-all duration-500 hover:shadow-md hover:shadow-cyan-500/20 overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-cyan-500 before:to-blue-500 before:-translate-x-full before:transition-transform before:duration-500 hover:before:translate-x-0"
                     >
                         <span className="relative z-10 transition-opacity duration-300 group-hover/contact-btn:opacity-0">Get In Touch</span>
-                        <ExternalLinkIcon 
+                        <ExternalLinkIcon
                             className="absolute w-6 h-6 text-white transition-opacity duration-300 opacity-0 group-hover/contact-btn:opacity-100 z-20"
                         />
                     </a>
@@ -151,7 +152,7 @@ const Contact: React.FC = () => {
                             { color: "rgb(34, 197, 94)", label: "Green" }      // Green
                         ].map((heart, index) => (
                             <div key={index} className="flex flex-col items-center gap-1">
-                                <LoveReact 
+                                <LoveReact
                                     color={heart.color}
                                     size={45}
                                     onToggle={(isLiked) => {

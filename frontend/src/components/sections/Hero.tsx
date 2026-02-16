@@ -1,5 +1,6 @@
 import React from 'react';
 import { Boxes } from '../common/BoxesCore';
+import { SOCIAL_LINKS } from '../../utils/constants';
 
 const Hero: React.FC = () => {
     const scrollToAbout = () => {
@@ -21,10 +22,10 @@ const Hero: React.FC = () => {
                 <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-purple-400/20 to-transparent rounded-full blur-3xl"></div>
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-cyan-400/15 to-blue-400/15 rounded-full blur-2xl"></div>
             </div>
-            
+
             {/* Interactive Boxes Background */}
             <Boxes />
-            
+
             <div className="relative z-20 max-w-4xl px-8">
                 <h1 className="text-5xl md:text-6xl font-bold mb-6 text-shadow-lg animate-fade-in">
                     Hi, I'm{' '}
@@ -33,13 +34,13 @@ const Hero: React.FC = () => {
                     </span>
                 </h1>
                 <p className="text-xl md:text-2xl mb-4 opacity-90 animate-slide-up">
-                        I'm an Final-year Student in CET major
+                    I'm an Final-year Student in CET major
                 </p>
-                
+
                 {/* Social Contact Icons */}
                 <div className="flex justify-center gap-6 mb-4">
                     <a
-                        href="https://github.com/dtruowfng3"
+                        href={SOCIAL_LINKS.GITHUB}
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="GitHub"
@@ -59,7 +60,7 @@ const Hero: React.FC = () => {
                         </svg>
                     </a>
                     <a
-                        href="https://www.linkedin.com/in/truong-vo-814922345/"
+                        href={SOCIAL_LINKS.LINKEDIN}
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="LinkedIn"
@@ -79,7 +80,7 @@ const Hero: React.FC = () => {
                         </svg>
                     </a>
                     <a
-                        href="https://www.facebook.com/d.truowfng.3/"
+                        href={SOCIAL_LINKS.FACEBOOK}
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Facebook"
@@ -100,9 +101,9 @@ const Hero: React.FC = () => {
                     </a>
                 </div>
             </div>
-            
+
             {/* Scroll Down Animation */}
-            <button 
+            <button
                 onClick={scrollToAbout}
                 className="absolute bottom-24 left-1/2 transform -translate-x-1/2 text-white z-30 scroll-down-arrow hover:opacity-80 transition-opacity duration-300 cursor-pointer"
             >
