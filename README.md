@@ -46,7 +46,7 @@ frontend/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/dtruowfng3/myPortfolio.git
+   git clone https://github.com/truongvd3124/myPortfolio.git
    cd myPortfolio
    ```
 
