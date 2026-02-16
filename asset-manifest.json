@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.3f2ab9e0.css",
-    "main.js": "/static/js/main.3ef4b2e9.js",
+    "main.js": "/static/js/main.1cd78630.js",
     "static/media/autunm.jpg": "/static/media/autunm.a3bb9778f41428be9c13.jpg",
     "static/media/winter.jpg": "/static/media/winter.bf87d35acc968c1d64a2.jpg",
     "static/media/summer.jpg": "/static/media/summer.90ac90c5dffca75c9ca0.jpg",
@@ -35,10 +35,10 @@
     "static/media/Flag-Monaco--Streamline-Twemoji-Emoji.svg": "/static/media/Flag-Monaco--Streamline-Twemoji-Emoji.10f8171eb957626047eaeabe72bd1f28.svg",
     "static/media/Flag-Poland--Streamline-Twemoji-Emoji.svg": "/static/media/Flag-Poland--Streamline-Twemoji-Emoji.dc4c046539a06bd593ec3d0607a0a761.svg",
     "main.3f2ab9e0.css.map": "/static/css/main.3f2ab9e0.css.map",
-    "main.3ef4b2e9.js.map": "/static/js/main.3ef4b2e9.js.map"
+    "main.1cd78630.js.map": "/static/js/main.1cd78630.js.map"
   },
   "entrypoints": [
     "static/css/main.3f2ab9e0.css",
-    "static/js/main.3ef4b2e9.js"
+    "static/js/main.1cd78630.js"
   ]
 }
